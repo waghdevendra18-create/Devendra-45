@@ -1,0 +1,92 @@
+interface Shape
+{
+    double area();
+}
+
+
+class Circle implements Shape
+{
+     double radius;
+
+  Circle(double r)
+ {
+    radius=r;
+ }public double area()
+ {
+    return Math.PI*radius*radius;
+ 
+ }
+}
+
+class Rectangle implements Shape
+{
+    double length,breadth;
+
+    Rectangle(double l,double b)
+    {
+      length=l; 
+      breadth=b;
+    }
+    public double area()
+    {
+        return length*breadth;
+    }
+}
+
+
+class Demo 
+{
+    static int count;
+    final double PI=3.14159;
+
+    static
+    {
+      count =0;
+      System.out.println("Static block executed Initial count ="+count);
+
+    }
+    {
+        count++;
+        System.out.println("Instance Block executed Object count="+count);
+
+    }
+     
+    Demo()
+    {
+        System.out.println("Default Constructor called");
+
+    }
+    final void displayMessage()
+    {
+        System.out.println("This is a final method and cannot be overridden");
+    }
+
+    void show(int a)
+    {
+        System.out.println("Show with int:"+a);
+    }
+    void show(String s)
+    {
+        System.out.println("show with String:"+s);
+
+    }
+}
+public class InterfaceBindingDemo
+{
+    public static void main(String[]args)
+    {
+        Shape s;
+        s=new Circle(5);
+        System.out.println("Area of circle:"+s.area());
+        s=new Rectangle(4,5);
+        System.out.println("Area of rectangle:"+s.area());
+
+        Demo d1= new Demo();
+    d1.displayMessage();
+    d1.show(150);
+    d1.show("Java is a platform independent langauge");
+     
+    Demo d2=new Demo();
+    d2.displayMessage();
+    }
+}
